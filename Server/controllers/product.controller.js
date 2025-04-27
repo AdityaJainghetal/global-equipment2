@@ -53,6 +53,20 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+
+const getAllProductsEcom = async (req, res) => {
+  try {
+    const products = await Product.find({ homeVisibility: true })
+      .populate("category")
+      .populate("subCategory");
+      
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 // Get a single product by ID
 const getProductById = async (req, res) => {
   try {
@@ -138,6 +152,25 @@ const deleteProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const getproducthome = async (req, res) => {
+  const { homeVisibility } = req.body;
+
+  // Create a new variable to toggle
+  const newHomeVisibility = homeVisibility;
+
+  try {
+    console.log(homeVisibility,"sdafsa")
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      { homeVisibility: homeVisibility },
+      { new: true }
+    );
+    res.json(updatedProduct);
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating home visibility' });
+  }
+};
+
 
 module.exports = {
   getAllProducts,
@@ -145,4 +178,6 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  getproducthome,
+  getAllProductsEcom
 };

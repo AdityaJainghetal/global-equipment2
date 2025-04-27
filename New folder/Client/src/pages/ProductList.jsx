@@ -659,6 +659,7 @@
 
 import { useEffect, useState } from "react";
 import { deleteProduct, fetchProducts } from "../api";
+
 import {
   Package,
   Search,
@@ -676,6 +677,7 @@ import {
 import { useCart } from "../CartContext";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import axios from "axios";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -695,6 +697,22 @@ const ProductList = () => {
     category: "",
     subCategory: ""
   });
+  
+  const handleToggle = async (id, checked) => {
+    
+    if (checked == false){
+      console.log('sssssssssssssssss')
+      checked = true
+    }
+    else {
+      console.log('adsdjaskdkajsdh')
+      checked = false
+    }
+    console.log("checked",checked)
+    await axios.put(`http://localhost:8080/product/${id}/home-visibility`, { homeVisibility: checked });
+    loadProducts(); // refresh list after toggle
+  };
+  
 
   const loadProducts = async () => {
     setLoading(true);
@@ -784,6 +802,22 @@ const ProductList = () => {
     }
   };
 
+  const changeStatus = async (id, homeVisibility) => {
+    const confirmToggle = window.confirm("Are you sure you want to change the visibility of this product?");
+    if (!confirmToggle) return;
+  
+    // const updatedVisibility = !homeVisibility; // simply toggle
+    console.log(id, "id");
+    console.log(homeVisibility, "updatedVisibility");
+  
+    try {
+      await handleToggle(id, homeVisibility);
+    } catch (err) {
+      console.error("Failed to update product visibility:", err);
+      alert("Failed to update product. Please try again.");
+    }
+  };
+  
   useEffect(() => {
     loadProducts();
   }, []);
@@ -1212,6 +1246,16 @@ const ProductList = () => {
                     )}
                     <button
                       onClick={() => {
+                        changeStatus(selectedProduct._id , selectedProduct.homeVisibility);
+                      }}
+                      className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg flex items-center ml-auto"
+                    >
+                      {/* <Trash2 size={16} className="mr-2" /> */}
+                      check
+
+                    </button>
+                    <button
+                      onClick={() => {
                         deleteP(selectedProduct._id);
                       }}
                       className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg flex items-center ml-auto"
@@ -1219,6 +1263,7 @@ const ProductList = () => {
                       <Trash2 size={16} className="mr-2" />
                       Delete Product
                     </button>
+                    
                     <button
                       onClick={() => {
                         setEditingProduct(selectedProduct);

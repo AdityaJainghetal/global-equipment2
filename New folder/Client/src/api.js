@@ -10,7 +10,6 @@ export const fetchProducts = () => API.get("/product")
 export const getProductByBarcode = (barcode) => API.post(`/cart/add/${barcode}`)
 
 export const deleteProduct = (id) => API.delete(`/product/${id}`)
-
 export const addProductToCart = (productId) => API.post(`/cart/add/${productId}`)
 
 export const Registration= ()=>API.post("/register")

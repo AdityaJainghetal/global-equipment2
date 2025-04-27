@@ -13,7 +13,7 @@ const CreateProduct = () => {
     specialization: "",
     category: "",
     subCategory: "",
-    size: [],
+    size: []
   });
 
   const [loading, setLoading] = useState(false);

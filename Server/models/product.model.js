@@ -25,6 +25,7 @@ const productSchema = new mongoose.Schema({
             type: String
         }
     ],
+    homeVisibility: { type: Boolean, default: true },
     PDFbrochure: [
         {
             type: String
