@@ -130,7 +130,7 @@ const Header = () => {
                                     aria-label="Shop categories"
                                 >
                                     <FiMenu size={18} />
-                                    <span className="font-medium">Shop Categories</span>
+                                    <span className="font-medium">Categories</span>
                                 </button>
 
                                 {/* Search Bar with animation */}

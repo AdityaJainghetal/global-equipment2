@@ -21,10 +21,11 @@ const BoxPage = () => {
   ];
 
   return (
-    <div className="bg-gray-100 relative ">
-
+    <div className="bg-gray-100 relative">
+    {/* Wrapper to center content */}
+    <div className="mx-auto max-w-7xl">
       {/* Mission, Vision, Quality Section */}
-      <div className="flex flex-col md:flex-row md:absolute -top-32 z-30 justify-center items-center gap-6 px-6 md:px-16 lg:px-24 py-12">
+      <div className="flex flex-col md:flex-row md:absolute -top-32 z-30 justify-center items-center gap-10 px-6 md:px-26 lg:px-24 py-12">
         {sections.map((item, index) => (
           <motion.div
             key={index}
@@ -39,9 +40,9 @@ const BoxPage = () => {
           </motion.div>
         ))}
       </div>
-
-      
     </div>
+  </div>
+  
   );
 };
 

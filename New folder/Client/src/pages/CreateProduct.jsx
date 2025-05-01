@@ -5,6 +5,9 @@ import { addProduct, fetchcategory, fetchSubcategory } from "../api";
 import { CheckCircle, Upload, X } from "lucide-react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import DOMPurify from 'dompurify';
+
+
 
 const CreateProduct = () => {
   const [formData, setFormData] = useState({

@@ -16,10 +16,11 @@ const navItems = [
   { to: "/categories", label: "Categories", icon: Layers },
   { to: "/subcategories", label: "Sub-Categories", icon: LayoutGrid },
   { to: "/create", label: "Add Product", icon: PlusCircle },
-  { to: "/registration", label: "Registration", icon: UserPlus },
-  { to: "/login", label: "Login", icon: LogIn },
+  // { to: "/registration", label: "Registration", icon: UserPlus },
+  // { to: "/login", label: "Login", icon: LogIn },
   { to: "/enquiry", label: "Enquiry", icon: LogIn },
   { to: "/contact", label: "Contact", icon: LogIn },
+
 ];
 
 const Sidbar = () => {

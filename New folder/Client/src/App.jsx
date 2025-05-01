@@ -12,6 +12,8 @@ import Login from "./pages/Login"
 import Sidbar from "./pages/Navbar"
 import EnquiryDisplay from "./pages/enquiryDisplay"
 import ContactDisplay from "./pages/ContactDisplay"
+import AdminLogin from "./pages/AdminLogin"
+
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function AppContent() {
       <main className="max-w-7xl me-5 ms-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <Routes>
+            <Route path="/adminlogin" element={<AdminLogin/>}>
             <Route path="/" element={<ProductList />} />
             <Route path="/create" element={<CreateProduct />} />
             <Route path="/cart" element={<CartPage />} />
@@ -54,6 +57,8 @@ function AppContent() {
             <Route path="/contact" element={<ContactDisplay/>} />
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/login" element={<Login/>}/>
+       
+            </Route>
           </Routes>
         </div>
       </main>
